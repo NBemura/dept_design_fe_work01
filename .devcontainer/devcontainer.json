@@ -1,0 +1,25 @@
+{
+  "name": "nb-stuby-react",
+  "dockerFile": "../Dockerfile",
+  "workspaceFolder": "/usr/src/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/usr/src/app,type=bind,consistency=cached",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // JavaScriptのコード解析ツール。JSコードに問題やエラーがないか自動で検知・修正してくれる。
+        "dbaeumer.vscode-eslint",
+        // コードの自動整形ツール。
+        "esbenp.prettier-vscode",
+        // JavaScript/TypeScriptのAPIサジェスト支援の精度を向上させる。
+        "VisualStudioExptTeam.vscodeintellicode"
+      ],
+      "settings": {
+        // デフォルトのフォーマッターにprettierを指定し、ファイル保存時にフォーマットされるように
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "eslint.workingDirectories": ["./booklog"]
+      }
+    }
+  },
+  "postCreateCommand": "npm install -g npm@latest"
+}

@@ -1,0 +1,42 @@
+{
+  // "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "prettier"
+    // "plugin:prettier/recommended" // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.mts", "*.cts"],
+      "rules": {
+        // v6 で recommended から削除されたものを有効化
+        "no-extra-semi": "off",
+        "@typescript-eslint/no-extra-semi": "error",
+        // v6 で strict に移動したルールを有効化
+        "@typescript-eslint/no-non-null-assertion": "warn",
+        // v6 で stylistic に移動したルールを有効化
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "error",
+        "@typescript-eslint/adjacent-overload-signatures": "error",
+        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/prefer-namespace-keyword": "error",
+        // v6 で recommended に追加されたルールを無効化
+        "@typescript-eslint/no-duplicate-enum-values": "off",
+        "@typescript-eslint/no-unsafe-declaration-merging": "off",
+        // v6 で recommended-type-checked に追加されたルールを無効化
+        "@typescript-eslint/no-base-to-string": "off",
+        "@typescript-eslint/no-duplicate-type-constituents": "off",
+        "@typescript-eslint/no-redundant-type-constituents": "off",
+        "@typescript-eslint/no-unsafe-enum-comparison": "off"
+      }
+    }
+  ]
+}
