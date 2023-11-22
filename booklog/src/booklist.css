@@ -4,11 +4,11 @@
   margin-bottom: 32px;
 }
 .c-book-list__img {
+  margin-right: 24px;
   width: 128px;
 }
 .c-book-list__text {
   flex: 1;
-  margin-left: 24px;
 }
 .c-book-list__title {
   margin-bottom: 16px;
