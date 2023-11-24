@@ -1,0 +1,39 @@
+.c-book-list__item {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.c-book-list__img {
+  margin-right: 24px;
+  width: 128px;
+}
+.c-book-list__text {
+  flex: 1;
+}
+.c-book-list__title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.c-book-list__description {
+  margin-bottom: 16px;
+}
+.c-book-list__other {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.c-book-list-action {
+  margin-top: 16px;
+}
+.c-book-list-action__link {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #68c8ce;
+  color: #ffffff;
+  text-decoration: none;
+}
+.c-book-list-action__link:hover {
+  background: #54bec4;
+}
