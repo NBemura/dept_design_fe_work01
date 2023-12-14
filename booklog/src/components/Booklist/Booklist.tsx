@@ -1,14 +1,15 @@
-import { BookItem } from '../types/index' // 型の読み込み
-import '../styles/booklist.css'
+import { BookItem } from '../../types/index' // 型の読み込み
+import './booklist.css'
 
 // Propsの型
 // App.tsxのuseStateの箇所で使った型とは別に、子コンポーネントでも定義が必要？？
-type BookItemsProps = {
+// →App.tsxは変数の型、こちらはPropsの型で両方必要！
+type BookListProps = {
   items: BookItem[]
 }
 
 //引数に使うデータ（items）を渡し、型をつける
-export function Booklist({ items }: BookItemsProps) {
+export function Booklist({ items }: BookListProps) {
   return (
     <ul className="c-book-list">
       {/* 複数の式が入る場合は”()”ではなく”{}” */}

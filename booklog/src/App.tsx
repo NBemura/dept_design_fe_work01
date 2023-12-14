@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { MOCK_DATA } from './mockdata' // モックデータの読み込み
 import { BookItem } from './types/index' // 型の読み込み
-import { Header } from './components/Header'
-import { Booklist } from './components/Booklist'
+import { Header } from './components/Header/Header'
+import { Booklist } from './components/Booklist/Booklist'
 import './App.css'
 
 function App() {
