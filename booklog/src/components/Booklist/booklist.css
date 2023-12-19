@@ -1,7 +1,11 @@
+.c-book-list {
+  overflow-y: scroll;
+  height: calc(100vh - 64px);
+}
 .c-book-list__item {
   display: flex;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  padding: 32px;
+  border-bottom: 1px solid #cccccc;
 }
 .c-book-list__img {
   margin-right: 24px;
@@ -11,12 +15,19 @@
   flex: 1;
 }
 .c-book-list__title {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   font-size: 24px;
   font-weight: bold;
 }
 .c-book-list__description {
-  margin-bottom: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  margin-bottom: 8px;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* ブラウザがサポートしていない場合のフェールセーフ */
+  max-height: 50px;
 }
 .c-book-list__other {
   margin-top: 8px;
