@@ -186,3 +186,16 @@ a {
   margin-right: auto;
   max-width: 990px;
 }
+
+.u-visually-hidden {
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border-width: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}

@@ -1,0 +1,24 @@
+.p-search-form {
+  padding: 24px 0;
+}
+.p-search-form__box {
+  display: flex;
+  justify-content: center;
+}
+.p-search-form__input {
+  padding: 8px;
+  border: 3px solid #68c8ce;
+  border-radius: 4px 0 0 4px;
+  width: 320px;
+  height: 44px;
+  font-size: 16px;
+}
+.p-search-form__button {
+  padding: 8px 16px;
+  height: 44px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  background: #68c8ce;
+  color: #ffffff;
+}

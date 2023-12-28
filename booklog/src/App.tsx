@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { MOCK_DATA } from './mockdata' // モックデータの読み込み
 import { BookItem } from './types/index' // 型の読み込み
 import { Header } from './components/Header/Header'
+import { Search } from './components/Search/Search'
 import { Booklist } from './components/Booklist/Booklist'
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <main className="l-main">
         <div className="u-container">
+          <Search />
           {/* Propsでデータをitemsという名前でコンポーネントに受け渡す */}
           <Booklist items={items} />
         </div>
