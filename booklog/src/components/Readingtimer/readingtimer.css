@@ -1,0 +1,30 @@
+.c-reading-timer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 16px;
+}
+.c-reading-timer__title {
+  font-weight: normal;
+}
+.c-reading-timer__counter {
+  margin-left: 8px;
+}
+.c-reading-timer__form {
+  display: flex;
+  font-weight: normal;
+  margin-left: 8px;
+}
+.c-reading-timer__select {
+  padding: 4px 8px;
+  border: 3px solid #68c8ce;
+  border-radius: 4px 0 0 4px;
+}
+.c-reading-timer__button {
+  padding: 4px 16px;
+  border: 3px solid #68c8ce;
+  font-size: 16px;
+  border-radius: 0 4px 4px 0;
+  background: #68c8ce;
+  color: #ffffff;
+}
