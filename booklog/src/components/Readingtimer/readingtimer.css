@@ -4,6 +4,11 @@
   align-items: center;
   font-size: 16px;
 }
+.c-reading-timer.is-finished .c-reading-timer__title,
+.c-reading-timer.is-finished .c-reading-timer__counter {
+  font-weight: bold;
+  color: #ee0000;
+}
 .c-reading-timer__title {
   font-weight: normal;
 }

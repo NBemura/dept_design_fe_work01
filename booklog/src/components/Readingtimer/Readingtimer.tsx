@@ -8,6 +8,8 @@ export function Readingtimer() {
   const [currentTime, setCurrentTime] = useState<number>(0)
   //タイマーが実行中かどうかを管理
   const [timerRunning, setTimerRunning] = useState<boolean>(false)
+  //初回ロードの判定
+  const [firstLoad, setFirstLoad] = useState<boolean>(true)
 
   console.count('レンダリングです')
 
@@ -18,7 +20,6 @@ export function Readingtimer() {
     setTimerRunning(true)
     //残り時間をcurrentTimeにセット。
     //refオブジェクトは.currentでDOMにアクセスでき、文字列で取得されるためNumberで数値化
-    //（parseIntからNumberにするとエラーが消えたのですが、使い分けがよくわかっていません…）
     setCurrentTime(Number(selectedTimeRef.current?.value))
   }
 
@@ -34,6 +35,7 @@ export function Readingtimer() {
         } else {
           clearInterval(intervalId)
           setTimerRunning(false)
+          setFirstLoad(false)
           return 0
         }
       })
@@ -46,16 +48,16 @@ export function Readingtimer() {
 
   //タイマーの整形
   const formatTime = (time: number) => {
-    const hours: number = Math.floor(time / 3600)
-    const minutes: number = Math.floor((time / 60) % 60)
     const seconds: number = time % 60
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+    return String(seconds).padStart(2, '0')
   }
-
+  console.log('firstLoad:' + firstLoad + ',timerRunning:' + timerRunning)
   return (
-    <div className="c-reading-timer">
+    <div className={`c-reading-timer ${timerRunning || firstLoad ? '' : 'is-finished'}`}>
       <h2 className="c-reading-timer__title">読書タイマー</h2>
-      <div className="c-reading-timer__counter">{formatTime(currentTime)}</div>
+      <div className="c-reading-timer__counter">
+        {timerRunning || firstLoad ? <>残り{formatTime(currentTime)}秒</> : '終了'}
+      </div>
       <form className="c-reading-timer__form" onSubmit={handleStartSubmit}>
         {/* useRefを使うことで、変更のたびにレンダリングを発生しないようにできる。（非制御コンポーネント） */}
         <select className="c-reading-timer__select" name="slectedTime" ref={selectedTimeRef}>
