@@ -11,7 +11,7 @@ export function Readingtimer() {
   //初回ロードの判定
   const [firstLoad, setFirstLoad] = useState<boolean>(true)
 
-  console.count('レンダリングです')
+  // console.count('レンダリングです')
 
   //スタートボタン
   const handleStartSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,7 @@ export function Readingtimer() {
 
   //第二引数[timerRunning]が更新されたら実行
   useEffect(() => {
-    console.count('useEffectです')
+    // console.count('useEffectです')
 
     if (!timerRunning) return
     const intervalId = setInterval(() => {

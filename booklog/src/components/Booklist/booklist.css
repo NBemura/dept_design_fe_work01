@@ -1,6 +1,5 @@
 .c-book-list {
   overflow-y: scroll;
-  height: calc(100vh - 64px - 92px);
 }
 .c-book-list__item {
   display: flex;
