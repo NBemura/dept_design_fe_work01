@@ -1,55 +1,57 @@
 import { BookItem } from '../../types/index' // 型の読み込み
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import './search.css'
 
 //Propsで渡されるデータの型
 type SearchProps = {
-  handleSearchItemsUpdate: (newSearchItems: BookItem[], newTotalItems: number, newDisplayNum: number) => void
+  DISPLAY_NUM: number
+  searchItemsUpdate: (newSearchItems: BookItem[], newTotalItems: number) => void
+}
+
+//JSONの型
+type Result = {
+  kind: string
+  totalItems: number
+  items: BookItem[]
 }
 
 // 2-5）Propsで親で定義した関数を受け取る
 export function Search(props: SearchProps) {
   const searchRef = useRef<HTMLInputElement>(null)
-  const [query, setQuery] = useState<string>('')
 
   // 1-1）検索ボタン
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // queryにinputの文字列をセット。undefinedは許容できないので、undefined、nullの場合空文字列をセット
-    setQuery(searchRef.current?.value ?? '')
+    void getBooks()
   }
 
-  // 1-３）API情報を取得しJSONに加工
+  // 1-2）API情報を取得しJSONに加工
   const getBooks = async () => {
-    // 表示件数
-    const displayNum = 10
-
+    // queryにinputの文字列をセット。undefinedは許容できないので、undefined、nullの場合空文字列をセット
+    // queryはリクエストのタイミングでわかれば良いので、stateで管理しなくてもOK
+    const query = searchRef.current?.value ?? ''
     try {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes/?q="${query}"&maxResults=${displayNum}`)
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes/?q="${query}"&maxResults=${props.DISPLAY_NUM}`,
+      )
 
       if (!response.ok) {
-        throw new Error('APIからデータを取得できませんでした。')
+        console.error('response.ok:', response.ok)
+        console.error('response.status:', response.status)
+        console.error('response.statesText:', response.statusText)
+        throw new Error(response.statusText)
       }
 
-      // JSONの型はどうすれば良い？？
-      const data = await response.json()
+      // ひとまず型アサーションで対処
+      const data = (await response.json()) as Result
+      console.log('data: ', data)
       // 2-1）dataを親に渡したい！→親にデータを渡すには、親で関数を定義
       // 2-6）親で定義した関数を実行。引数に親に渡したい値を入れる
-      props.handleSearchItemsUpdate(data.items, data.totalItems, displayNum)
+      props.searchItemsUpdate(data.items, data.totalItems)
     } catch (error) {
-      console.error('ネットワークエラーです。', error)
+      console.error(error)
     }
   }
-
-  // 1-2）queryが更新されたら実行。
-  // レンダリングごとにAPIが動くと困るのでuseEffectを使用
-  useEffect(() => {
-    // 初回ロードでも動いてしまうため、queryが空でなければgetBooksを実行
-    if (query.trim() !== '') {
-      // voidでPromiseの結果の無視を明示
-      void getBooks()
-    }
-  }, [query])
 
   return (
     <>
