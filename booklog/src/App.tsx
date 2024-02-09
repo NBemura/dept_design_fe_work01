@@ -13,14 +13,12 @@ function App() {
   //2-2）データ受け渡し用のstateを定義
   const [searchItems, setSearchItems] = useState<BookItem[]>([])
   const [totalItems, setTotalItems] = useState<number>(0)
-  const [searchClicked, setSearchClicked] = useState<boolean>(false)
 
   //2-3）setSearchItemsを更新するための関数
-  const searchItemsUpdate = (newSearchItems: BookItem[], newTotalItems: number) => {
+  const onGetBooks = (newSearchItems: BookItem[], newTotalItems: number) => {
     //2-7）最終的に、子のdata.itemsがsearchItemsにセットされる
     setSearchItems(newSearchItems)
     setTotalItems(newTotalItems)
-    setSearchClicked(true)
   }
 
   return (
@@ -30,9 +28,9 @@ function App() {
         <div className="u-container">
           <section className="p-search">
             <h2 className="u-visually-hidden">書籍検索</h2>
-            {/* 2-4）Propsで子に関数をわたす */}
-            <Search searchItemsUpdate={searchItemsUpdate} DISPLAY_NUM={DISPLAY_NUM} />
-            {searchClicked && (
+            {/* 2-4）Propsで子に関数をわたす。displayNumという名前で定数DISPLAY_NUMを渡す */}
+            <Search onFetchBooks={onGetBooks} displayNum={DISPLAY_NUM} />
+            {totalItems > 0 && (
               <>
                 <p className="p-search__message">
                   {totalItems}件の書籍が見つかりました。

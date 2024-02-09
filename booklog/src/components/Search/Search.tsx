@@ -4,8 +4,8 @@ import './search.css'
 
 //Propsで渡されるデータの型
 type SearchProps = {
-  DISPLAY_NUM: number
-  searchItemsUpdate: (newSearchItems: BookItem[], newTotalItems: number) => void
+  displayNum: number
+  onFetchBooks: (newSearchItems: BookItem[], newTotalItems: number) => void
 }
 
 //JSONの型
@@ -32,7 +32,7 @@ export function Search(props: SearchProps) {
     const query = searchRef.current?.value ?? ''
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes/?q="${query}"&maxResults=${props.DISPLAY_NUM}`,
+        `https://www.googleapis.com/books/v1/volumes/?q="${query}"&maxResults=${props.displayNum}`,
       )
 
       if (!response.ok) {
@@ -47,7 +47,7 @@ export function Search(props: SearchProps) {
       console.log('data: ', data)
       // 2-1）dataを親に渡したい！→親にデータを渡すには、親で関数を定義
       // 2-6）親で定義した関数を実行。引数に親に渡したい値を入れる
-      props.searchItemsUpdate(data.items, data.totalItems)
+      props.onFetchBooks(data.items, data.totalItems)
     } catch (error) {
       console.error(error)
     }
