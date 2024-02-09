@@ -184,6 +184,8 @@ a {
 .u-container {
   margin-left: auto;
   margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
   max-width: 990px;
 }
 
@@ -198,4 +200,17 @@ a {
   border-width: 0;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
+}
+
+/* ==============================
+	Project
+============================== */
+.p-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 64px);
+}
+.p-search__message {
+  margin-bottom: 24px;
 }
