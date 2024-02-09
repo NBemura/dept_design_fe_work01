@@ -33,7 +33,7 @@ export function Booklist({ items }: BookListProps) {
               )}
               {previewLink && (
                 <div className="c-book-list-action">
-                  <a className="c-book-list-action__link" href="{previewLink}" target="_blank">
+                  <a className="c-book-list-action__link" href={previewLink} target="_blank">
                     詳しく見る
                   </a>
                 </div>

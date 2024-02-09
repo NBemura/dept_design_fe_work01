@@ -15,7 +15,7 @@ function App() {
   const [totalItems, setTotalItems] = useState<number>(0)
 
   //2-3）setSearchItemsを更新するための関数
-  const onGetBooks = (newSearchItems: BookItem[], newTotalItems: number) => {
+  const searchItemsUpdate = (newSearchItems: BookItem[], newTotalItems: number) => {
     //2-7）最終的に、子のdata.itemsがsearchItemsにセットされる
     setSearchItems(newSearchItems)
     setTotalItems(newTotalItems)
@@ -29,7 +29,7 @@ function App() {
           <section className="p-search">
             <h2 className="u-visually-hidden">書籍検索</h2>
             {/* 2-4）Propsで子に関数をわたす。displayNumという名前で定数DISPLAY_NUMを渡す */}
-            <Search onFetchBooks={onGetBooks} displayNum={DISPLAY_NUM} />
+            <Search onFetchBooks={searchItemsUpdate} displayNum={DISPLAY_NUM} />
             {totalItems > 0 && (
               <>
                 <p className="p-search__message">
