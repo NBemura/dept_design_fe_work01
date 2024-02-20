@@ -5,7 +5,7 @@ import './search.css'
 //Propsで渡されるデータの型
 type SearchProps = {
   displayNum: number
-  onFetchBooks: (newSearchItems: BookItem[], newTotalItems: number) => void
+  onGetBooks: (newSearchItems: BookItem[], newTotalItems: number) => void
 }
 
 //JSONの型
@@ -47,7 +47,7 @@ export function Search(props: SearchProps) {
       console.log('data: ', data)
       // 2-1）dataを親に渡したい！→親にデータを渡すには、親で関数を定義
       // 2-6）親で定義した関数を実行。引数に親に渡したい値を入れる
-      props.onFetchBooks(data.items, data.totalItems)
+      props.onGetBooks(data.items, data.totalItems)
     } catch (error) {
       console.error(error)
     }

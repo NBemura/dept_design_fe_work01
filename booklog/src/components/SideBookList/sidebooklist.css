@@ -1,0 +1,33 @@
+.p-side-mybook {
+  overflow-y: scroll;
+  padding: 24px 16px;
+  height: calc(100vh - 64px);
+}
+.p-side-mybook-list__item {
+  margin-bottom: 32px;
+}
+.p-side-mybook-list__img img {
+  max-width: 120px;
+}
+.p-side-mybook-list__text {
+  margin-top: 8px;
+  font-size: 13px;
+}
+.p-side-mybook-list__title {
+  font-weight: bold;
+}
+.p-side-mybook-list-action {
+  margin-top: 8px;
+}
+.p-side-mybook-list-action__link {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: #68c8ce;
+  color: #ffffff;
+  text-decoration: none;
+}
+.p-side-mybook-list-action__link:hover {
+  background: #54bec4;
+}

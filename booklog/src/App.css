@@ -203,12 +203,28 @@ a {
 }
 
 /* ==============================
+	Layout
+============================== */
+.l-column {
+  display: flex;
+}
+.l-column-side {
+  width: 280px;
+  background: #e7eced;
+}
+.l-column-main {
+  flex: 1;
+}
+
+/* ==============================
 	Project
 ============================== */
 .p-search {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 24px;
+  padding-right: 24px;
   height: calc(100vh - 64px);
 }
 .p-search__message {
