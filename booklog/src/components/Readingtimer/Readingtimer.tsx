@@ -51,7 +51,7 @@ export function Readingtimer() {
     const seconds: number = time % 60
     return String(seconds).padStart(2, '0')
   }
-  console.log('firstLoad:' + firstLoad + ',timerRunning:' + timerRunning)
+  // console.log('firstLoad:' + firstLoad + ',timerRunning:' + timerRunning)
   return (
     <div className={`c-reading-timer ${timerRunning || firstLoad ? '' : 'is-finished'}`}>
       <h2 className="c-reading-timer__title">読書タイマー</h2>
