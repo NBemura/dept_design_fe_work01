@@ -34,16 +34,32 @@
 }
 
 .c-book-list-action {
+  display: flex;
+  gap: 8px;
   margin-top: 16px;
 }
 .c-book-list-action__link {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 8px;
+  font-size: 16px;
   background: #68c8ce;
   color: #ffffff;
   text-decoration: none;
 }
 .c-book-list-action__link:hover {
   background: #54bec4;
+}
+.c-book-list-action__link.is-mybook {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #e26c18;
+  border-radius: 8px;
+  background: #e26c18;
+  color: #ffffff;
+  text-decoration: none;
+}
+.c-book-list-action__link.is-mybook:hover {
+  background: #d06213;
+  cursor: pointer;
 }

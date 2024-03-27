@@ -17,6 +17,8 @@
   font-weight: bold;
 }
 .p-side-mybook-list-action {
+  display: flex;
+  gap: 8px;
   margin-top: 8px;
 }
 .p-side-mybook-list-action__link {
@@ -30,4 +32,13 @@
 }
 .p-side-mybook-list-action__link:hover {
   background: #54bec4;
+}
+.p-side-mybook-list-action__link.is-mybook {
+  border: 1px solid #e26c18;
+  background: #e26c18;
+}
+.p-side-mybook-list-action__link.is-mybook:hover {
+  border-color: #d06213;
+  background: #d06213;
+  cursor: pointer;
 }

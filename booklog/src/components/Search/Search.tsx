@@ -44,7 +44,7 @@ export function Search(props: SearchProps) {
 
       // ひとまず型アサーションで対処
       const data = (await response.json()) as Result
-      console.log('data: ', data)
+      // console.log('data: ', data)
       // 2-1）dataを親に渡したい！→親にデータを渡すには、親で関数を定義
       // 2-6）親で定義した関数を実行。引数に親に渡したい値を入れる
       props.onGetBooks(data.items, data.totalItems)

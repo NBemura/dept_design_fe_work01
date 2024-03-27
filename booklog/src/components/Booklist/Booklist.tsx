@@ -6,10 +6,11 @@ import './booklist.css'
 // →App.tsxは変数の型、こちらはPropsの型で両方必要！
 type BookListProps = {
   items: BookItem[]
+  handleAddMyBook: (newBook: BookItem) => void
 }
 
 //引数に使うデータ（items）を渡し、型をつける
-export function Booklist({ items }: BookListProps) {
+export function Booklist({ items, handleAddMyBook }: BookListProps) {
   return (
     <ul className="c-book-list">
       {/* 複数の式が入る場合は”()”ではなく”{}” */}
@@ -31,13 +32,25 @@ export function Booklist({ items }: BookListProps) {
                   {publisher && <div className="c-book-list__publisher">出版社：{publisher}</div>}
                 </div>
               )}
-              {previewLink && (
-                <div className="c-book-list-action">
-                  <a className="c-book-list-action__link" href={previewLink} target="_blank">
-                    詳しく見る
-                  </a>
-                </div>
-              )}
+              <ul className="c-book-list-action">
+                {previewLink && (
+                  <li className="c-book-list-action__item">
+                    <a className="c-book-list-action__link" href={previewLink} target="_blank">
+                      詳しく見る
+                    </a>
+                  </li>
+                )}
+                <li className="c-book-list-action__item">
+                  {/* onClickにて現在の書籍を引数に渡す */}
+                  <button
+                    className="c-book-list-action__link is-mybook"
+                    type="button"
+                    onClick={() => handleAddMyBook(item)}
+                  >
+                    MyBooksに追加
+                  </button>
+                </li>
+              </ul>
             </div>
           </li>
         )
